@@ -54,13 +54,13 @@ export default function FormSubmit({
               {successMessage}
             </p>
           ) : (
-            <>
+            <div className="group flex w-full focus-within:shadow-md focus-within:transition-shadow rounded-lg">
               <input
                 type="email"
                 placeholder={placeholder}
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
-                className={"w-full p-3 rounded-l-lg bg-secondary text-text outline-none focus:ring-1 focus:ring-accent"}
+                className={"w-full p-3 rounded-l-lg bg-secondary text-text outline-none"}
               />
               <button
                 type="button"
@@ -69,7 +69,7 @@ export default function FormSubmit({
               >
                 {text}
               </button>
-            </>
+            </div>
           )}
         </div>
 

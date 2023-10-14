@@ -1,10 +1,10 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { fetchAPI } from "../utils/fetch-api";
 
 import Loader from "../components/Loader";
-import Blog from "../views/blog-list";
 import PageHeader from "../components/PageHeader";
+import Blog from "../views/blog-list";
 
 interface Meta {
   pagination: {
@@ -14,7 +14,7 @@ interface Meta {
   };
 }
 
-export default function Profile() {
+export default function Categories() {
   const [meta, setMeta] = useState<Meta | undefined>();
   const [data, setData] = useState<any>([]);
   const [isLoading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ export default function Profile() {
     setLoading(true);
     try {
       const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-      const path = `/articles`;
+      const path = `/categories`;
       const urlParamsObject = {
         sort: { createdAt: "desc" },
         populate: {
@@ -40,7 +40,7 @@ export default function Profile() {
       };
       const options = { headers: { Authorization: `Bearer ${token}` } };
       const responseData = await fetchAPI(path, urlParamsObject, options);
-
+      debugger
       if (start === 0) {
         setData(responseData.data);
       } else {

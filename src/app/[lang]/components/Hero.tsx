@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import { HiSearch } from "react-icons/hi";
 import { getStrapiMedia } from "../utils/api-helpers";
 import { fetchAPI } from "../utils/fetch-api";
 import { renderButtonStyle } from "../utils/render-button-style";
@@ -94,22 +94,22 @@ function handleSubmit() {
           />
           <div className="flex flex-row sm:items-center sm:justify-center lg:justify-start">
             {data.has_search_box ?
-              <>
+              <div className={"group flex w-full focus-within:shadow-md focus-within:transition-shadow rounded-lg"}>
               <input
                 type="email"
                 placeholder={searchBox?.field?.placeholder ?? ''}
                 onChange={(e) => setSearch(e.target.value)}
                 value={search}
-                className={"w-full p-3 rounded-l-lg bg-secondary text-text outline-none focus:ring-1 focus:ring-primary"}
+                className={"w-full p-3 rounded-l-lg bg-secondary text-text outline-none"}
               />
               <button
                 type="button"
-                className="w-auto p-4 rounded-r-lg bg-primary dark:text-gray-900"
+                className="w-auto px-3 py-0 rounded-r-lg bg-primary dark:text-gray-900 group-focus-within:shadow-md hover:drop-shadow-md"
                 onClick={handleSubmit}
               >
-                <FaSearch/>
+                <HiSearch className="w-6 h-6"/>
               </button>
-            </>
+            </div>
             : data.buttons.map((button: Button, index: number) => (
               <Link
                 key={index}
